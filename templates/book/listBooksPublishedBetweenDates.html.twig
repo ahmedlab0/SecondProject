@@ -1,0 +1,15 @@
+
+    <h1>List of Books Published Between 2014 And 2018</h1>
+    <ul>
+    {% if books==[] %}
+    <p>empty</p>
+    {%endif %}
+        {% for book in books %}
+            <li>{{ book.title }} 
+            <li>{{ book.publicationDate|date('Y-m-d') }}</li>
+            <li>{{book.author.username}}</li>
+            <li>************************</li>
+            <br>
+        {% endfor %}
+    </ul>
+

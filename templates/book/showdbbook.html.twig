@@ -1,0 +1,70 @@
+<h1>Book List</h1>
+{{form_start(f)}}
+{{form_label(f.ref)}}
+{{form_widget(f.ref)}}
+
+{{form_end(f)}}
+<table border="3" class="center">
+    <tr>
+        <td>Title</td>
+        <td>Publication Date</td>
+        <td>Published</td>
+        <td>Category</td>
+        <td>Author</td>
+        <td>Actions</td>       
+    </tr>
+    {% for a in book %}
+    <tr>
+   
+    <td>{{a.title}}</td>
+    <td>{{a.PublicationDate|date('F j, Y')}}</td>
+    <td>{{a.published}}</td>
+    <td>{{a.category}}</td>
+    <td>{{a.author.username}}</td>
+    <td><a href="{{path('editbook',{'id':a.ref})}}">Edit</a>
+        <a href="{{path('deletebook',{'id':a.ref})}}">Delete</a>
+        <a href="{{ path('showbyidauthor', {'ref': a.ref}) }}">Show</a></td>
+    
+    
+    </tr>
+    
+   {% endfor %}
+
+ 
+    </table>
+
+    
+
+<p style="text-align:center">Number of Published Books: {{ publishedCount }}</p>
+<p style="text-align:center">Number of Unpublished Books: {{ unpublishedCount }}</p>
+<p style="text-align:center"> Total Number Of Science Fiction Books: {{ totalBooks }}</p>
+
+<table class="center" cellspacing="3" cellpadding="5">
+    <tr>
+    <td><a href="{{ path('addformbook') }}"><p style="text-align:center">Add Book    </p></a></td>
+    <td><a href="{{ path('listBooksPublishedBetweenDates') }}"><p style="text-align:center">Show Date    </p></a></td>
+    <td><a href="{{ path('deleteAuthorZeroBooks') }}"><p style="text-align:center">Delete Authors with 0 books</p></a></td>
+</tr>
+</table>
+    <style>
+        h1 {
+          text-align: center;
+        }
+        .center {
+  margin-left: auto;
+  margin-right: auto;
+}
+.top-right-link {
+            position: absolute;
+            top: 10px; /* Adjust the distance from the top as needed */
+            right: 10px; /* Adjust the distance from the right as needed */
+            text-align: center;
+        }
+        </style>
+<p style="text-align:center"><a href="{{ path('updateCategoryWilliamShakespeare') }}">Update Category William Shakespeare</a></p>
+<footer>
+<td><a href="{{ path('showdbbook') }}" class="top-right-link">Back To List</a></td>
+
+</footer>
+
+    

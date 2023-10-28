@@ -1,0 +1,24 @@
+<table border="3" class="center">
+    <tr>
+        <td>Title</td>
+        <td>Publication Date</td>
+        <td>Published</td>
+        <td>Category</td>
+        <td>Author</td>  
+          <td>Number of Books</td>  
+    </tr>
+    {% for a in book %}
+    <tr>
+   
+    <td>{{a.title}}</td>
+    <td>{{a.PublicationDate|date('F j, Y')}}</td>
+    <td>{{a.published}}</td>
+    <td>{{a.category}}</td>
+    <td>{{a.author.username}}</td>
+     <td>{{a.author.nbbooks}}</td>
+     </tr>
+    
+   {% endfor %}
+
+ 
+    </table>

@@ -1,0 +1,22 @@
+<h1>List of Books Published Before 2023 by Authors with More Than 35 Books</h1>
+    <ul>
+        <table border="3" class="center">
+            <tr>
+                <td>Title</td>
+                <td>Publication Date</td>
+                <td>Category</td>
+                <td>Author</td> 
+                <td>Number of books</td>  
+            </tr>
+            {% for a in books %}
+            <tr>
+           
+            <td>{{a.title}}</td>
+            <td>{{a.PublicationDate|date('Y-m-d')}}</td>
+            <td>{{a.category}}</td>
+            <td>{{a.author.username}}</td>
+            <td>{{a.author.nbbooks}}</td>
+            </tr>
+        
+        {% endfor %}
+    </table>
